@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud360 - Registro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8e8e8 0%, #d4d4d4 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -500px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: #f8f8f8;
+            border-radius: 24px;
+            padding: 45px 65px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        h1 {
+            color: #2c2c2c;
+            font-size: 1.95rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #737373;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 50px 16px 45px;
+            border: 2px solid #d4d4d4;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            color: #2c2c2c;
+            background: white;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #d4a04f;
+            box-shadow: 0 0 0 3px rgba(212, 160, 79, 0.1);
+        }
+
+        input.active {
+            border-color: #d4a04f;
+        }
+
+        .input-icon-left {
+            position: absolute;
+            left: 16px;
+            color: #999;
+            font-size: 1.15rem;
+        }
+
+        .input-icon-right {
+            position: absolute;
+            right: 18px;
+            color: #999;
+            font-size: 1.15rem;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 17px;
+            background: linear-gradient(135deg, #e8b84d 0%, #d4a04f 100%);
+            border: none;
+            border-radius: 12px;
+            color: #2c2c2c;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(212, 160, 79, 0.3);
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 160, 79, 0.4);
+        }
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+        .register-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 22px;
+            color: #737373;
+            font-size: 0.95rem;
+        }
+
+        .login-link a {
+            color: #d4a04f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crea tu Cuenta de Paciente</h1>
+        <p class="subtitle">Regístrate para gestionar tus citas médicas.</p>
+        
+        <div class="input-group">
+            <div class="input-wrapper">
+                <span class="input-icon-left">👤</span>
+                <input type="text" placeholder="Nombre Completo" id="nombre">
+                <span class="input-icon-right"></span>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <div class="input-wrapper">
+                <span class="input-icon-left">✉</span>
+                <input type="email" placeholder="Correo Electrónico" id="correo">
+                <span class="input-icon-right"></span>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <div class="input-wrapper">
+                <span class="input-icon-left">🔒</span>
+                <input type="password" placeholder="Contraseña" class="active" id="password">
+                <span class="input-icon-right"></span>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <div class="input-wrapper">
+                <span class="input-icon-left">🔒</span>
+                <input type="password" placeholder="Confirmar Contraseña" class="active" id="confirmPassword">
+                <span class="input-icon-right"></span>
+            </div>
+        </div>
+        
+        <button class="register-btn">Registrarse</button>
+        
+        <p class="login-link">
+            ¿Ya tienes cuenta? <a href="login.html">Iniciar Sesión</a>
+        </p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api-service.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+</html>

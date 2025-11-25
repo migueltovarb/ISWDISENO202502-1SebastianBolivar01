@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Cita - Salud360</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Salud360</h1>
+                <div class="user-info">
+                    <span id="nombreUsuario"></span>
+                    <button id="btnCerrarSesion" class="btn-logout">Cerrar Sesión</button>
+                </div>
+            </div>
+            <nav>
+                <a href="creacion-citas.html">Crear Cita</a>
+                <a href="modificar-cita.html">Modificar Cita</a>
+                <a href="cancelar-cita.html" class="active">Cancelar Cita</a>
+                <a href="disponibilidad-medica.html">Disponibilidad</a>
+                <a href="notificacio-cita.html">Notificaciones</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="cancelar-cita-section">
+                <h2>Cancelar Cita Médica</h2>
+                
+                <div class="info-cancelacion">
+                    <div class="alert alert-info">
+                        <strong>ℹ️ Importante:</strong> Las citas canceladas no podrán ser recuperadas. 
+                        Asegúrese de seleccionar la cita correcta antes de confirmar la cancelación.
+                    </div>
+                </div>
+
+                <div class="mis-citas">
+                    <div class="mis-citas-header">
+                        <h3>Mis Citas Programadas</h3>
+                        <button id="btnActualizarCitas" class="btn btn-secondary btn-sm">
+                            <span class="icon-refresh">⟳</span> Actualizar
+                        </button>
+                    </div>
+                    
+                    <div id="listaCitas" class="lista-citas">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Cargando citas...</p>
+                        </div>
+                    </div>
+
+                    <div id="noCitas" class="no-citas" style="display: none;">
+                        <div class="empty-state">
+                            <span class="icon-empty">📅</span>
+                            <h3>No tienes citas programadas</h3>
+                            <p>No hay citas disponibles para cancelar.</p>
+                            <a href="creacion-citas.html" class="btn btn-primary">Programar Nueva Cita</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="buscar-cita-alternativa">
+                    <h3>Buscar Cita por ID</h3>
+                    <p class="subtitle">Si conoces el ID de tu cita, puedes buscarla directamente aquí</p>
+                    
+                    <form id="formBuscarCitaCancelar">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="buscarCitaIdCancelar">ID de Cita:</label>
+                                <input 
+                                    type="number" 
+                                    id="buscarCitaIdCancelar" 
+                                    name="buscarCitaIdCancelar" 
+                                    placeholder="Ejemplo: 12345"
+                                    min="1"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                🔍 Buscar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="citaBuscada" class="cita-detalle" style="display: none;">
+                    <h3>Detalles de la Cita</h3>
+                    <div id="detallesCitaBuscada"></div>
+                </div>
+
+                <div id="mensaje" class="mensaje"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Salud360. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Modal de Confirmación de Cancelación -->
+    <div id="modalConfirmacion" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-confirmacion">
+            <div class="modal-header">
+                <h3>⚠️ Confirmar Cancelación</h3>
+                <button class="modal-close" id="btnCerrarModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <p class="modal-warning">
+                    ¿Está seguro que desea cancelar esta cita? Esta acción no se puede deshacer.
+                </p>
+                
+                <div id="detallesCitaCancelar" class="cita-info-modal"></div>
+
+                <div class="form-group">
+                    <label for="motivoCancelacion">Motivo de cancelación (opcional):</label>
+                    <textarea 
+                        id="motivoCancelacion" 
+                        name="motivoCancelacion"
+                        rows="3" 
+                        placeholder="Ingrese el motivo de la cancelación..."
+                        maxlength="500"></textarea>
+                    <small class="char-count">0/500 caracteres</small>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="btnConfirmarCancelacion" class="btn btn-danger">
+                    ✓ Sí, Cancelar Cita
+                </button>
+                <button id="btnCancelarModal" class="btn btn-secondary">
+                    ← Volver
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Éxito -->
+    <div id="modalExito" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-success">
+            <div class="modal-header">
+                <h3>✓ Cita Cancelada</h3>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <p>La cita ha sido cancelada exitosamente.</p>
+                <p class="success-message" id="mensajeExito"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCerrarExito" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/modificar-cancelar-citas.js"></script>
+</body>
+</html>

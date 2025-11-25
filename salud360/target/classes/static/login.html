@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud360 - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8e8e8 0%, #d4d4d4 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -500px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: #f8f8f8;
+            border-radius: 24px;
+            padding: 55px 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        h1 {
+            color: #2c2c2c;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .subtitle {
+            color: #737373;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 50px 16px 18px;
+            border: 2px solid #d4d4d4;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            color: #2c2c2c;
+            background: white;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        input:focus {
+            border-color: #d4a04f;
+            box-shadow: 0 0 0 3px rgba(212, 160, 79, 0.1);
+        }
+
+        input.active {
+            border-color: #d4a04f;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 18px;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 17px;
+            background: linear-gradient(135deg, #e8b84d 0%, #d4a04f 100%);
+            border: none;
+            border-radius: 12px;
+            color: #2c2c2c;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 28px;
+            box-shadow: 0 4px 15px rgba(212, 160, 79, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 160, 79, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 22px;
+            color: #737373;
+            font-size: 0.92rem;
+        }
+
+        .forgot-password a {
+            color: #737373;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            color: #2c2c2c;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 15px;
+            color: #737373;
+            font-size: 0.95rem;
+        }
+
+        .register-link a {
+            color: #d4a04f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenid@ a Salud360</h1>
+        <p class="subtitle">Inicia sesión para gestionar tus citas.</p>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="email" placeholder="Correo electrónico" id="email" required>
+                    <span class="input-icon">✉</span>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="password" placeholder="Contraseña" id="password" class="active" required>
+                    <span class="input-icon">🔒</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-btn">Iniciar Sesión</button>
+            
+            <p class="forgot-password">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </p>
+            
+            <p class="register-link">
+                ¿No tienes cuenta? <a href="sing-up.html">Regístrate aquí</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api-service.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
